@@ -14,10 +14,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Management;
 using System.Threading;
 using System.Net.NetworkInformation;
-using System.Net;
-using System.Security;
 using System.Security.Principal;
 using System.ServiceProcess;
 
@@ -37,9 +36,12 @@ namespace IntFix_Enterprise
             textBox1.Text += "========================================================= \r\n MainFix Cycle Version 1.1 \r\n IntFix Enterprise \r\n ========================================================= \r\n";
             textBox1.Text += "00% Completed:Updating Group Policy \r\n";
             progressBar1.Value = 10;
+
+
             #region GPUPDATE
-            //run GPUPDATE
-            try
+            MessageBox.Show("INFORMATION: This method is best done when connected via Ethernet.", "IntFix Enterprise - Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                //run GPUPDATE
+                try
             {
                 FileInfo execFile = new FileInfo("gpupdate.exe");
                 Process proc = new Process();
@@ -48,7 +50,8 @@ namespace IntFix_Enterprise
                 proc.StartInfo.Arguments = "/force";
                 proc.Start();
                 //Wait for GPUpdate to finish
-                proc.WaitForExit();
+                Application.DoEvents();
+                Thread.Sleep(100);
             }
             catch (Exception exception)
             {
