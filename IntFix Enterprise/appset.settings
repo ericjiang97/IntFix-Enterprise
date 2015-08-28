@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Licensed" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Camberwell High School</Value>
+      <Value Profile="(Default)">Camberwell HS, IT Department</Value>
     </Setting>
   </Settings>
 </SettingsFile>

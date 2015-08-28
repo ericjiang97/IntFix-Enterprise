@@ -183,29 +183,50 @@ namespace IntFix_Enterprise
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text != "")
+            if (IsAdministrator() == false)
             {
-                MessageBox.Show("Error. No KMS Server Address Enterred. Please type one in,", "IntFix - KMSFix", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult error = MessageBox.Show("Error #00002. This command requires admin previllages. Please visit https://www.ejiang.co/support/knowledgebase.php?article=2 for more information. Do you want to restart as admin?", "IntFix Enterprise - Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (error == DialogResult.Yes)
+                {
+                    // Restart program and run as admin
+                    var exeName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+                    ProcessStartInfo startInfo = new ProcessStartInfo(exeName);
+                    startInfo.Verb = "runas";
+                    System.Diagnostics.Process.Start(startInfo);
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    //ignore
+                }
             }
             else
             {
-                textBox1.Text += "\r\n Running KMS Windows Activation Method \r\n";
-                string kmsserver = textBox2.Text;
-                System.Diagnostics.Process process = new System.Diagnostics.Process();
-                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                startInfo.FileName = "cmd.exe";
-                startInfo.Arguments = "/C slmgr.vbs /skms " + kmsserver;
-                process.StartInfo = startInfo;
-                process.Start();
-                textBox1.Text += "Finished Setting KMS Server. Running Activation Services \r\n";
-                System.Diagnostics.Process process2 = new System.Diagnostics.Process();
-                System.Diagnostics.ProcessStartInfo startInfo2 = new System.Diagnostics.ProcessStartInfo();
-                startInfo2.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                startInfo2.FileName = "cmd.exe";
-                startInfo2.Arguments = "/C slmgr.vbs /ato";
-                process2.StartInfo = startInfo2;
-                process2.Start();
+                if (textBox1.Text == "")
+                {
+                    MessageBox.Show("Error. No KMS Server Address Enterred. Please type one in,", "IntFix - KMSFix", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    textBox1.Text += "\r\n Running KMS Windows Activation Method \r\n";
+                    string kmsserver = textBox2.Text;
+                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    startInfo.FileName = "cmd.exe";
+                    startInfo.Arguments = "/C slmgr.vbs /skms " + kmsserver;
+                    process.StartInfo = startInfo;
+                    process.Start();
+                    textBox1.Text += "Finished Setting KMS Server. Running Activation Services \r\n";
+                    System.Diagnostics.Process process2 = new System.Diagnostics.Process();
+                    System.Diagnostics.ProcessStartInfo startInfo2 = new System.Diagnostics.ProcessStartInfo();
+                    startInfo2.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    startInfo2.FileName = "cmd.exe";
+                    startInfo2.Arguments = "/C slmgr.vbs /ato";
+                    process2.StartInfo = startInfo2;
+                    process2.Start();
+                }
             }
             
         }
