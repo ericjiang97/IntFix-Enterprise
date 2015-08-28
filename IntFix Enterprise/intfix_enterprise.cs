@@ -37,7 +37,23 @@ namespace IntFix_Enterprise
             textBox1.Text += "00% Completed:Updating Group Policy \r\n";
             progressBar1.Value = 10;
 
-            GPO_Update(); //see mainfix.cs
+            try
+            {
+                FileInfo execFile = new FileInfo("gpupdate.exe");
+                Process proc = new Process();
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                proc.StartInfo.FileName = execFile.Name;
+                proc.StartInfo.Arguments = "/force";
+                proc.Start();
+                proc.WaitForExit();//Wait for GPUpdate to finish
+                Application.DoEvents();
+                Thread.Sleep(100);
+            }
+            catch (Exception exception)
+            {
+                //Exception
+                MessageBox.Show("An Error has Occured. Error:" + exception);
+            }
 
             textBox1.Text += "10% Completed: Running IPFix \r\n";
             progressBar1.Value = 30;
@@ -290,27 +306,6 @@ namespace IntFix_Enterprise
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AboutBox1().Show();
-        }
-
-        public void GPOUpd(object sender, EventArgs e)
-        {
-            try
-            {
-                FileInfo execFile = new FileInfo("gpupdate.exe");
-                Process proc = new Process();
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                proc.StartInfo.FileName = execFile.Name;
-                proc.StartInfo.Arguments = "/force";
-                proc.Start();
-                proc.WaitForExit();//Wait for GPUpdate to finish
-                Application.DoEvents();
-                Thread.Sleep(100);
-            }
-            catch (Exception exception)
-            {
-                //Exception
-                MessageBox.Show("An Error has Occured. Error:" + exception);
-            }
         }
     }
 }
