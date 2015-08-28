@@ -1,7 +1,7 @@
 ﻿/*
-* IntFix Enterprise Version 1.0
-* Based off Core Code of IntFix v3.4.1.0
-* by Eric JIANG
+IntFix Enterprise Version 1.2.11-alpha1
+Based off Core Code of IntFix v3.4.1.0
+by Eric JIANG
 */
 using System;
 using System.Collections.Generic;
@@ -37,30 +37,8 @@ namespace IntFix_Enterprise
             textBox1.Text += "00% Completed:Updating Group Policy \r\n";
             progressBar1.Value = 10;
 
+            GPO_Update(); //see mainfix.cs
 
-            #region GPUPDATE
-            MessageBox.Show("INFORMATION: This method is best done when connected via Ethernet.", "IntFix Enterprise - Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                //run GPUPDATE
-                try
-            {
-                FileInfo execFile = new FileInfo("gpupdate.exe");
-                Process proc = new Process();
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                proc.StartInfo.FileName = execFile.Name;
-                proc.StartInfo.Arguments = "/force";
-                proc.Start();
-                //Wait for GPUpdate to finish
-                Application.DoEvents();
-                Thread.Sleep(100);
-            }
-            catch (Exception exception)
-            {
-                //Exception
-                MessageBox.Show("An Error has Occured. Error:" + exception);
-            }
-            textBox1.Text += "GPUPDATE Finished \r\n";
-            progressBar1.Value = 15;
-            #endregion
             textBox1.Text += "10% Completed: Running IPFix \r\n";
             progressBar1.Value = 30;
             #region ipAdress Fix
@@ -129,6 +107,11 @@ namespace IntFix_Enterprise
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.ScrollToCaret();
             #endregion
+        }
+
+        private void GPO_Update()
+        {
+            throw new NotImplementedException();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -302,6 +285,32 @@ namespace IntFix_Enterprise
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AboutBox1().Show();
+        }
+
+        public void GPOUpd(object sender, EventArgs e)
+        {
+            try
+            {
+                FileInfo execFile = new FileInfo("gpupdate.exe");
+                Process proc = new Process();
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                proc.StartInfo.FileName = execFile.Name;
+                proc.StartInfo.Arguments = "/force";
+                proc.Start();
+                proc.WaitForExit();//Wait for GPUpdate to finish
+                Application.DoEvents();
+                Thread.Sleep(100);
+            }
+            catch (Exception exception)
+            {
+                //Exception
+                MessageBox.Show("An Error has Occured. Error:" + exception);
+            }
         }
     }
 }

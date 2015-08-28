@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.cm_MainFix = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -47,6 +46,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.hibernateComputerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cm_MainFix.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,23 +133,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(145, 377);
+            this.button3.Location = new System.Drawing.Point(12, 377);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 23);
             this.button3.TabIndex = 7;
             this.button3.Text = "Run as &Admin";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(12, 377);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "&About";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -176,11 +166,12 @@
             // 
             this.cm_MainFix.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.aboutToolStripMenuItem,
             this.toolStripSeparator1,
             this.hibernateComputerToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.cm_MainFix.Name = "cm_MainFix";
-            this.cm_MainFix.Size = new System.Drawing.Size(184, 76);
+            this.cm_MainFix.Size = new System.Drawing.Size(184, 120);
             this.cm_MainFix.Text = "MainFix";
             // 
             // toolStripMenuItem1
@@ -209,13 +200,19 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // intfix_enterprise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 411);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
@@ -248,7 +245,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip cm_MainFix;
@@ -256,6 +252,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem hibernateComputerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
