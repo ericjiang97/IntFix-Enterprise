@@ -33,18 +33,17 @@ namespace IntFix_Enterprise
 
         private void startup_Load(object sender, EventArgs e)
         {
-            timeleft = 10;
+            timeleft = 5;
             this.timer1.Start();
         }
-
-       
+        
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (timeleft > 0)
             {
                 timeleft = timeleft - 1;
-                progressBar1.Value = (20 - timeleft)*5;
+                progressBar1.Value = (5 - timeleft)*20;
             }
             else
             {

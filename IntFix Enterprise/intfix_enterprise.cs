@@ -28,6 +28,8 @@ namespace IntFix_Enterprise
         public intfix_enterprise()
         {
             InitializeComponent();
+            string license = appset.Default.Licensed;
+            label2.Text = "Licensed to: " + license;
         }
 
         private void mainfixbtn_Click(object sender, EventArgs e)
@@ -154,6 +156,7 @@ namespace IntFix_Enterprise
             {
                 this.Text += " (Admin)";
                 button3.Enabled = false;
+                runAsAdminToolStripMenuItem.Enabled = false;
             }
                 #endregion
 
@@ -306,6 +309,26 @@ namespace IntFix_Enterprise
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AboutBox1().Show();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal; //Open Form
+            this.ShowInTaskbar = true; //Show icon in taskbar
+        }
+
+        private void runAsAdminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (IsAdministrator() == false)
+            {
+                // Restart program and run as admin
+                var exeName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+                ProcessStartInfo startInfo = new ProcessStartInfo(exeName);
+                startInfo.Verb = "runas";
+                System.Diagnostics.Process.Start(startInfo);
+                this.Close();
+                return;
+            }
         }
     }
 }

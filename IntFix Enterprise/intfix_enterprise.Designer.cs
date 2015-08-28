@@ -47,6 +47,8 @@
             this.hibernateComputerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.runAsAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cm_MainFix.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,7 +135,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 377);
+            this.button3.Location = new System.Drawing.Point(376, 382);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 23);
             this.button3.TabIndex = 7;
@@ -161,17 +163,19 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "IntFix Enterprise";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // cm_MainFix
             // 
             this.cm_MainFix.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.aboutToolStripMenuItem,
+            this.runAsAdminToolStripMenuItem,
             this.toolStripSeparator1,
             this.hibernateComputerToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.cm_MainFix.Name = "cm_MainFix";
-            this.cm_MainFix.Size = new System.Drawing.Size(184, 120);
+            this.cm_MainFix.Size = new System.Drawing.Size(184, 142);
             this.cm_MainFix.Text = "MainFix";
             // 
             // toolStripMenuItem1
@@ -203,15 +207,34 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 387);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "licensed_to:";
+            // 
+            // runAsAdminToolStripMenuItem
+            // 
+            this.runAsAdminToolStripMenuItem.Name = "runAsAdminToolStripMenuItem";
+            this.runAsAdminToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.runAsAdminToolStripMenuItem.Text = "&Run as Admin";
+            this.runAsAdminToolStripMenuItem.Click += new System.EventHandler(this.runAsAdminToolStripMenuItem_Click);
             // 
             // intfix_enterprise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 411);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox2);
@@ -253,6 +276,8 @@
         private System.Windows.Forms.ToolStripMenuItem hibernateComputerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem runAsAdminToolStripMenuItem;
     }
 }
 
