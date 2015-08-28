@@ -1,2 +1,4 @@
-# IntFix-Enterprise
-An Internet/General Fixing Tool for AD Computers
+# IntFix-Enterprise v1.3
+An Internet/General Fixing Tool for AD Computers.
+
+
