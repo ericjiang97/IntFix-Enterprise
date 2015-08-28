@@ -146,6 +146,8 @@ namespace IntFix_Enterprise
         {
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
+            this.Text = Application.ProductName + " | Version: " + Application.ProductVersion;
+            this.progressBar1.BackColor = Color.White;
             #region startup_setup
             string date = DateTime.Now.ToString("MM\\-dd\\-yyyy");
             saveFileDialog1.FileName = "log-" + date +"-" + Environment.MachineName;
