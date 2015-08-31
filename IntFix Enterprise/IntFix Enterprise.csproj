@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>wifi.ico</ApplicationIcon>
+    <ApplicationIcon>wifi - Copy.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -177,6 +177,7 @@
   <ItemGroup>
     <Content Include="Images\wifi-signal-full-3.png" />
     <Content Include="Images\wifi.ico" />
+    <Content Include="wifi - Copy.ico" />
     <Content Include="wifi.ico" />
   </ItemGroup>
   <ItemGroup>
