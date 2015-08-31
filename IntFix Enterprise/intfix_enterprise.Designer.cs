@@ -53,6 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.cm_MainFix.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             this.mainfixbtn.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainfixbtn.Image = ((System.Drawing.Image)(resources.GetObject("mainfixbtn.Image")));
             this.mainfixbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.mainfixbtn.Location = new System.Drawing.Point(12, 14);
+            this.mainfixbtn.Location = new System.Drawing.Point(12, 46);
             this.mainfixbtn.Name = "mainfixbtn";
             this.mainfixbtn.Size = new System.Drawing.Size(128, 128);
             this.mainfixbtn.TabIndex = 0;
@@ -73,7 +74,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(15, 215);
+            this.textBox1.Location = new System.Drawing.Point(15, 230);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -83,9 +84,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(15, 383);
+            this.progressBar1.Location = new System.Drawing.Point(15, 393);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(527, 27);
+            this.progressBar1.Size = new System.Drawing.Size(527, 18);
             this.progressBar1.TabIndex = 2;
             // 
             // button1
@@ -94,7 +95,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(414, 14);
+            this.button1.Location = new System.Drawing.Point(414, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 128);
             this.button1.TabIndex = 3;
@@ -112,7 +113,7 @@
             this.button2.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(146, 14);
+            this.button2.Location = new System.Drawing.Point(146, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(128, 128);
             this.button2.TabIndex = 4;
@@ -124,7 +125,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 190);
+            this.label1.Location = new System.Drawing.Point(12, 207);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 5;
@@ -133,7 +134,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(123, 187);
+            this.textBox2.Location = new System.Drawing.Point(123, 203);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(419, 22);
             this.textBox2.TabIndex = 6;
@@ -154,7 +155,7 @@
             this.button5.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(280, 14);
+            this.button5.Location = new System.Drawing.Point(280, 46);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(128, 128);
             this.button5.TabIndex = 10;
@@ -239,7 +240,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 145);
+            this.label3.Location = new System.Drawing.Point(12, 177);
             this.label3.MaximumSize = new System.Drawing.Size(128, 15);
             this.label3.MinimumSize = new System.Drawing.Size(128, 15);
             this.label3.Name = "label3";
@@ -252,7 +253,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(146, 145);
+            this.label4.Location = new System.Drawing.Point(146, 177);
             this.label4.MaximumSize = new System.Drawing.Size(128, 15);
             this.label4.MinimumSize = new System.Drawing.Size(128, 15);
             this.label4.Name = "label4";
@@ -265,7 +266,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(280, 145);
+            this.label5.Location = new System.Drawing.Point(280, 177);
             this.label5.MaximumSize = new System.Drawing.Size(128, 15);
             this.label5.MinimumSize = new System.Drawing.Size(128, 15);
             this.label5.Name = "label5";
@@ -278,7 +279,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(414, 145);
+            this.label6.Location = new System.Drawing.Point(414, 177);
             this.label6.MaximumSize = new System.Drawing.Size(128, 15);
             this.label6.MinimumSize = new System.Drawing.Size(128, 15);
             this.label6.Name = "label6";
@@ -287,12 +288,25 @@
             this.label6.Text = "Save Log";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 9);
+            this.label7.MaximumSize = new System.Drawing.Size(500, 30);
+            this.label7.MinimumSize = new System.Drawing.Size(500, 30);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(500, 30);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "IntFix Enterprise (Lite Edition)";
+            // 
             // intfix_enterprise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(559, 445);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -347,6 +361,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
