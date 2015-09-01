@@ -25,7 +25,7 @@ namespace IntFix_Enterprise {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Camberwell HS, IT Department")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Indvidual License")]
         public string Licensed {
             get {
                 return ((string)(this["Licensed"]));
