@@ -33,7 +33,7 @@ namespace IntFix_Enterprise
 
         private void startup_Load(object sender, EventArgs e)
         {
-            timeleft = 5;
+            timeleft = 20;
             this.timer1.Start();
         }
         
@@ -43,7 +43,7 @@ namespace IntFix_Enterprise
             if (timeleft > 0)
             {
                 timeleft = timeleft - 1;
-                progressBar1.Value = (5 - timeleft)*20;
+                progressBar1.Value = (20 - timeleft)*5;
             }
             else
             {

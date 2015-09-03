@@ -54,11 +54,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cm_MainFix.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainfixbtn
             // 
+            this.mainfixbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainfixbtn.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainfixbtn.Image = ((System.Drawing.Image)(resources.GetObject("mainfixbtn.Image")));
             this.mainfixbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -91,6 +94,7 @@
             // 
             // button1
             // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
@@ -110,6 +114,7 @@
             // 
             // button2
             // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -142,7 +147,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(446, 416);
+            this.button3.Location = new System.Drawing.Point(446, 415);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 27);
             this.button3.TabIndex = 7;
@@ -152,9 +157,10 @@
             // 
             // button5
             // 
+            this.button5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button5.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button5.Image = global::IntFix_Enterprise.Properties.Resources.printer;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button5.Location = new System.Drawing.Point(280, 46);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(128, 128);
@@ -179,9 +185,10 @@
             this.runAsAdminToolStripMenuItem,
             this.toolStripSeparator1,
             this.hibernateComputerToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.settingsToolStripMenuItem});
             this.cm_MainFix.Name = "cm_MainFix";
-            this.cm_MainFix.Size = new System.Drawing.Size(184, 120);
+            this.cm_MainFix.Size = new System.Drawing.Size(184, 164);
             this.cm_MainFix.Text = "MainFix";
             // 
             // toolStripMenuItem1
@@ -300,12 +307,32 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "IntFix Enterprise (Lite Edition)";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(419, 9);
+            this.label8.MaximumSize = new System.Drawing.Size(128, 15);
+            this.label8.MinimumSize = new System.Drawing.Size(128, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(128, 15);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "R/S Printer Spooler";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
             // intfix_enterprise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(559, 445);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -362,6 +389,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
 

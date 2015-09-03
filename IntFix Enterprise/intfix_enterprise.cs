@@ -30,15 +30,18 @@ namespace IntFix_Enterprise
             InitializeComponent();
             string license = appset.Default.Licensed;
             label2.Text = "Licensed to: " + license;
+
         }
 
         private void mainfixbtn_Click(object sender, EventArgs e)
         {
+            
+
             textBox1.Text += "\r\n";
             textBox1.Text += "========================================================= \r\n MainFix Cycle Version 1.1 \r\n IntFix Enterprise \r\n ========================================================= \r\n";
             textBox1.Text += "00% Completed:Updating Group Policy \r\n";
             progressBar1.Value = 10;
-
+            
             try
             {
                 FileInfo execFile = new FileInfo("gpupdate.exe");
@@ -176,7 +179,6 @@ namespace IntFix_Enterprise
 
         void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-
             textBox1.Text += "Exiting IntFix Enterprise";
             Application.Exit(); //Exits program, if form is closed.
         }

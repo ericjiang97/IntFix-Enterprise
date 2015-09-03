@@ -156,6 +156,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="startup.resx">
       <DependentUpon>startup.cs</DependentUpon>
@@ -181,6 +182,11 @@
   <ItemGroup>
     <Content Include="Images\wifi-signal-full-3.png" />
     <Content Include="Images\wifi.ico" />
+    <None Include="Resources\wifi - Copy.ico" />
+    <None Include="Resources\1440742623_Wifi_d5_copy.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\Windows-10-logo-icon.png" />
     <Content Include="wifi - Copy.ico" />
     <Content Include="wifi.ico" />
   </ItemGroup>
