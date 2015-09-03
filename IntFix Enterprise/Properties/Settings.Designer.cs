@@ -22,17 +22,5 @@ namespace IntFix_Enterprise.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string s {
-            get {
-                return ((string)(this["s"]));
-            }
-            set {
-                this["s"] = value;
-            }
-        }
     }
 }

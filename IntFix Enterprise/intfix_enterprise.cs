@@ -24,6 +24,8 @@ namespace IntFix_Enterprise
 {
     public partial class intfix_enterprise : Form
     {
+        private string nameOrAddress;
+
         public string showme { get; set; }
         public intfix_enterprise()
         {
@@ -173,6 +175,22 @@ namespace IntFix_Enterprise
             textBox1.Text += "Current User: " + userName + "\r\n";
             textBox1.Text += "\r\n";
             textBox1.Text += "Battery Charge: " + string.Format("{0}%", (p.BatteryLifePercent * 100));
+            #endregion
+
+            #region pinginfo
+            bool pingable = false;
+            Ping pinger = new Ping();
+            string address = "http://www.google.com";
+            try
+            {
+                PingReply reply = pinger.Send(address);
+                pingable = reply.Status == IPStatus.Success;
+            }
+            catch (PingException)
+            {
+                label8.Text = "Disconnected";
+            }
+            label8.Text = "Connected! Reached: " + address; //return true
             #endregion
 
         }
