@@ -1,7 +1,11 @@
-# IntFix-Enterprise v1.3.5-preview
+# IntFix-Enterprise v1.3.11-update3-hotfix1
 An Internet/General Fixing Tool for AD Computers.
 
-##Update 1.3.5-preview Details
+## Update v1.3.11-update3-hotfix1
+- Client/Technician Update within Solution
+- Website Update (https://jia0020.github.io/IntFix-Enterprise)
+
+## Update 1.3.5-preview Details
 - Cleaner GUI
 - Font Change (from Open Sans to Segoe UI Light)
 - Button Logo Change.
