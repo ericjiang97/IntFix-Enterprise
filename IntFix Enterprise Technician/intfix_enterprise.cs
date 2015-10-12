@@ -1,6 +1,11 @@
 ﻿/*
-IntFix Enterprise Version 1.2.11-alpha1
+IntFix Enterprise Version 1.5-beta1
 Based off Core Code of IntFix v3.4.1.0
+    Startup Code:               Version 1.5
+    License Code:               Version 0.1
+    MainCode (Main Stack):      Version 1.2
+    PrinterFix:                 Version 2.0 - removed external site link
+    KMSFix:                     Version 0.3
 by Eric JIANG
 */
 using System;
@@ -24,21 +29,17 @@ namespace IntFix_Enterprise
 {
     public partial class intfix_enterprise : Form
     {
-        private string nameOrAddress;
-
+        public string statuslic;
         public string showme { get; set; }
         public intfix_enterprise()
         {
             InitializeComponent();
-            string license = appset.Default.Licensed;
+            string license = Properties.Settings.Default.licensee;
             label2.Text = "Licensed to: " + license;
-
         }
 
         private void mainfixbtn_Click(object sender, EventArgs e)
         {
-            
-
             textBox1.Text += "\r\n";
             textBox1.Text += "========================================================= \r\n MainFix Cycle Version 1.1 \r\n IntFix Enterprise \r\n ========================================================= \r\n";
             textBox1.Text += "00% Completed:Updating Group Policy \r\n";
@@ -52,7 +53,7 @@ namespace IntFix_Enterprise
                 proc.StartInfo.FileName = execFile.Name;
                 proc.StartInfo.Arguments = "/force";
                 proc.Start();
-                proc.WaitForExit();//Wait for GPUpdate to finish
+                proc.WaitForExit(); //Wait for GPUpdate to finish
                 Application.DoEvents();
                 Thread.Sleep(100);
             }
@@ -149,50 +150,67 @@ namespace IntFix_Enterprise
 
         private void intfix_enterprise_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
-            this.ShowInTaskbar = false;
+            string adminmode;
+            this.ShowInTaskbar = true;
             this.Text = Application.ProductName + " | Version: " + Application.ProductVersion;
             this.progressBar1.BackColor = Color.White;
             #region startup_setup
             string date = DateTime.Now.ToString("MM\\-dd\\-yyyy");
-            saveFileDialog1.FileName = "log-" + date +"-" + Environment.MachineName;
+            saveFileDialog1.FileName = "log-" + date + "-" + Environment.MachineName;
             this.FormClosed += new FormClosedEventHandler(Form1_FormClosed);
             PowerStatus p = SystemInformation.PowerStatus;
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             if (IsAdministrator() == true)
             {
                 this.Text += " (Admin)";
+                adminmode = "Admin";
                 button3.Enabled = false;
                 runAsAdminToolStripMenuItem.Enabled = false;
             }
-                #endregion
-
-                #region computerinfo
-                string machinename = Environment.MachineName;
-            string domainName = IPGlobalProperties.GetIPGlobalProperties().DomainName;
-            textBox1.Text += "Computer Name: " + machinename + "\r\n";
-            textBox1.Text += "Domain Name: " + domainName +"\r\n";
-            textBox1.Text += "Current User: " + userName + "\r\n";
-            textBox1.Text += "\r\n";
-            textBox1.Text += "Battery Charge: " + string.Format("{0}%", (p.BatteryLifePercent * 100));
+            else
+            {
+                adminmode = "Non-Admin Mode";
+            }
             #endregion
 
             #region pinginfo
             bool pingable = false;
+            string con;
             Ping pinger = new Ping();
-            string address = "http://www.google.com";
+            string address = Properties.Settings.Default.pingadr;
             try
             {
                 PingReply reply = pinger.Send(address);
                 pingable = reply.Status == IPStatus.Success;
+                label8.Text = "Connected! Reached: " + address; //return true
+                con = "Connected!";
             }
             catch (PingException)
             {
                 label8.Text = "Disconnected";
+                con = "Disonnected!";
             }
-            label8.Text = "Connected! Reached: " + address; //return true
             #endregion
 
+            #region computerinfo
+            TimeSpan d1 = Properties.Settings.Default.date - DateTime.Now;
+            double d2 = d1.Days;
+            string day = d2.ToString();
+            string machinename = Environment.MachineName;
+            string domainName = IPGlobalProperties.GetIPGlobalProperties().DomainName;
+            textBox1.Text += Application.ProductName + " (" + Properties.Settings.Default.license + ") | Version: " + Application.ProductVersion + " | " + adminmode + "\r\n";
+            textBox1.Text += "-------------------------------------------------------------------" + "\r\n";
+            textBox1.Text += "License Expires on: " + Properties.Settings.Default.date +"\r\n";
+            textBox1.Text += "Days Remaining (license): " + day + "\r\n";
+            textBox1.Text += "-------------------------------------------------------------------" + "\r\n";
+            textBox1.Text += "Computer Name: " + machinename + "\r\n";
+            textBox1.Text += "Domain Name: " + domainName +"\r\n";
+            textBox1.Text += "Current User: " + userName + "\r\n";
+            textBox1.Text += "-------------------------------------------------------------------" + "\r\n";
+            textBox1.Text += "Battery Charge: " + string.Format("{0}%", (p.BatteryLifePercent * 100)) + "\r\n";
+            textBox1.Text += "Internet Connction Status: " + con + "\r\n";
+            #endregion
+            
         }
 
         void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -259,22 +277,30 @@ namespace IntFix_Enterprise
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            if (IsAdministrator() == false)
+            try
             {
-                // Restart program and run as admin
-                var exeName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-                ProcessStartInfo startInfo = new ProcessStartInfo(exeName);
-                startInfo.Verb = "runas";
-                System.Diagnostics.Process.Start(startInfo);
-                this.Close();
-                return;
+                if (IsAdministrator() == false)
+                {
+                    // Restart program and run as admin
+                    var exeName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+                    ProcessStartInfo startInfo = new ProcessStartInfo(exeName);
+                    startInfo.Verb = "runas";
+                    System.Diagnostics.Process.Start(startInfo);
+                    this.Close();
+                    return;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error ExAdm00001: \r\n" + ex, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
     }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new AboutBox1().Show();
+            new about().Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -301,7 +327,7 @@ namespace IntFix_Enterprise
             }
             else
             {
-                DialogResult error = MessageBox.Show("Error #00002. This command requires admin previllages. Please visit https://www.ejiang.co/support/knowledgebase.php?article=2 for more information. Do you want to restart as admin?", "IntFix Enterprise - Error", MessageBoxButtons.YesNo,MessageBoxIcon.Error);
+                DialogResult error = MessageBox.Show("ExAD0002 - This command requires admin previllages. Do you want to restart as admin?", "IntFix Enterprise - Error", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
                 if (error == DialogResult.Yes)
                 {
                     // Restart program and run as admin
@@ -321,16 +347,6 @@ namespace IntFix_Enterprise
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //Open Button
-            this.WindowState = FormWindowState.Normal; //Open Form
-            this.ShowInTaskbar = true; //Show icon in taskbar
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            if(WindowState == FormWindowState.Minimized)
-            {
-                this.ShowInTaskbar = false; //Hide icon in taskbar
-            }
         }
 
         private void hibernateComputerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,13 +367,11 @@ namespace IntFix_Enterprise
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AboutBox1().Show();
+            new about().Show();
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.WindowState = FormWindowState.Normal; //Open Form
-            this.ShowInTaskbar = true; //Show icon in taskbar
         }
 
         private void runAsAdminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -372,6 +386,75 @@ namespace IntFix_Enterprise
                 this.Close();
                 return;
             }
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            new config().Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            string adminmode;
+            this.ShowInTaskbar = true;
+            this.Text = Application.ProductName + " | Version: " + Application.ProductVersion;
+            this.progressBar1.BackColor = Color.White;
+            #region startup_setup
+            string date = DateTime.Now.ToString("MM\\-dd\\-yyyy");
+            saveFileDialog1.FileName = "log-" + date + "-" + Environment.MachineName;
+            this.FormClosed += new FormClosedEventHandler(Form1_FormClosed);
+            PowerStatus p = SystemInformation.PowerStatus;
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            if (IsAdministrator() == true)
+            {
+                this.Text += " (Admin)";
+                adminmode = "Admin";
+                button3.Enabled = false;
+                runAsAdminToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                adminmode = "Non-Admin Mode";
+            }
+            #endregion
+
+            #region pinginfo
+            bool pingable = false;
+            string con;
+            Ping pinger = new Ping();
+            string address = Properties.Settings.Default.pingadr;
+            try
+            {
+                PingReply reply = pinger.Send(address);
+                pingable = reply.Status == IPStatus.Success;
+                label8.Text = "Connected! Reached: " + address; //return true
+                con = "Connected!";
+            }
+            catch (PingException)
+            {
+                label8.Text = "Disconnected";
+                con = "Disonnected!";
+            }
+            #endregion
+            TimeSpan d1 = Properties.Settings.Default.date - DateTime.Now;
+            double d2 = d1.Days;
+            string day = d2.ToString();
+            string machinename = Environment.MachineName;
+            string domainName = IPGlobalProperties.GetIPGlobalProperties().DomainName;
+            textBox1.Text += Application.ProductName + " (" + Properties.Settings.Default.license + ") | Version: " + Application.ProductVersion + " | " + adminmode + "\r\n";
+            textBox1.Text += "-------------------------------------------------------------------" + "\r\n";
+            textBox1.Text += "License Expires on: " + Properties.Settings.Default.date + "\r\n";
+            textBox1.Text += "Days Remaining (license): " + day + "\r\n";
+            textBox1.Text += "-------------------------------------------------------------------" + "\r\n";
+            textBox1.Text += "Computer Name: " + machinename + "\r\n";
+            textBox1.Text += "Domain Name: " + domainName + "\r\n";
+            textBox1.Text += "Current User: " + userName + "\r\n";
+            textBox1.Text += "-------------------------------------------------------------------" + "\r\n";
+            textBox1.Text += "Battery Charge: " + string.Format("{0}%", (p.BatteryLifePercent * 100)) + "\r\n";
+            textBox1.Text += "Internet Connction Status: " + con + "\r\n";
+            string license = Properties.Settings.Default.licensee;
+            label2.Text = "Licensed to: " + license;
         }
     }
 }

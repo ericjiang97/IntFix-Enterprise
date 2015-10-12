@@ -24,13 +24,12 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>https://ejiang.co/download/intfix/</UpdateUrl>
-    <SupportUrl>https://ejiang.co/support</SupportUrl>
-    <ErrorReportUrl>https://ejiang.co/support/knowledgebase/</ErrorReportUrl>
     <ProductName>IntFix Enterprise Lite</ProductName>
     <PublisherName>eJIANG Co</PublisherName>
-    <ApplicationRevision>10</ApplicationRevision>
-    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -54,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>wifi - Copy.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\wifi - Copy.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -102,10 +101,15 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -117,11 +121,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox1.cs">
+    <Compile Include="about.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox1.Designer.cs">
-      <DependentUpon>AboutBox1.cs</DependentUpon>
+    <Compile Include="about.Designer.cs">
+      <DependentUpon>about.cs</DependentUpon>
+    </Compile>
+    <Compile Include="activate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="activate.Designer.cs">
+      <DependentUpon>activate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="config.Designer.cs">
+      <DependentUpon>config.cs</DependentUpon>
     </Compile>
     <Compile Include="intfix_enterprise.cs">
       <SubType>Form</SubType>
@@ -131,19 +147,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="appset.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>appset.settings</DependentUpon>
-    </Compile>
     <Compile Include="startup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="startup.Designer.cs">
       <DependentUpon>startup.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AboutBox1.resx">
-      <DependentUpon>AboutBox1.cs</DependentUpon>
+    <EmbeddedResource Include="about.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="activate.resx">
+      <DependentUpon>activate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="config.resx">
+      <DependentUpon>config.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="intfix_enterprise.resx">
       <DependentUpon>intfix_enterprise.cs</DependentUpon>
@@ -163,7 +180,7 @@
     </EmbeddedResource>
     <None Include="IntFix Enterprise_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -171,24 +188,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="appset.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>appset.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\wifi-signal-full-3.png" />
-    <Content Include="Images\wifi.ico" />
     <None Include="Resources\wifi - Copy.ico" />
     <None Include="Resources\1440742623_Wifi_d5_copy.png" />
     <None Include="Resources\printer.png" />
     <None Include="Resources\save.png" />
     <None Include="Resources\Windows-10-logo-icon.png" />
-    <Content Include="wifi - Copy.ico" />
-    <Content Include="wifi.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -206,6 +215,13 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\metroicon.png" />
+    <Content Include="Images\wifi.ico" />
+    <None Include="Resources\metroicon.png" />
+    <None Include="Resources\save%2864px%29.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

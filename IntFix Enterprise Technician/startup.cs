@@ -27,37 +27,48 @@ namespace IntFix_Enterprise
         public startup()
         {
             InitializeComponent();
-            label2.Text = "Version " + this.ProductVersion;
+            if(progressBar1.Value == 10)
+            {
+                this.Hide();
+                new intfix_enterprise().Show();
+            }
+            timer1.Start();
         }
         public int timeleft;
 
         private void startup_Load(object sender, EventArgs e)
         {
-            timeleft = 20;
-            this.timer1.Start();
-        }
-        
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (timeleft > 0)
+            if(Properties.Settings.Default.date < DateTime.Now.Date)
             {
-                timeleft = timeleft - 1;
-                progressBar1.Value = (20 - timeleft)*5;
+                Properties.Settings.Default.license = "activated";
+                Properties.Settings.Default.Save();
             }
             else
             {
-                timer1.Stop();
-                new intfix_enterprise().Show();
-                this.Hide();
+                Properties.Settings.Default.license = "unactivated";
+                Properties.Settings.Default.Save();
             }
+            progressBar1.Value += 10;
         }
-
+        
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if(timeleft == 10)
+
+            if (progressBar1.Value == 10)
             {
-                label3.Text = "Loading Workers";
+                this.Hide();
+                new intfix_enterprise().Show();
+            }
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (progressBar1.Value == 10)
+            {
+                timer1.Stop();
+                this.Hide();
+                new intfix_enterprise().Show();
             }
         }
     }
