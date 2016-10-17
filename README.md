@@ -2,6 +2,7 @@
 An Internet/General Fixing Tool for AD Computers. 
 Designed by Technicians for Technicians
 
+_This project is abandoned and out of date. End of Support is officially at Novemnber 2016_
 ## Current Features Include:
 - MainFix Cycle
  - GPUpdate
@@ -14,28 +15,6 @@ Designed by Technicians for Technicians
 - Pings certain address upon startup
 
 ## Releases
-Version Number		Version Name		Release Type		Release Date
-### Version 2.5		Frisking Fish		Final Release		February 2016
-
-### Version 2.3		
-
-### Version 2.1		Eating Elephant		Nightly-beta		End-January 2016
-
-### Version 2.0		Daring Duck			Official 2.0		January	2016
-- Official Release of jDomain Code
-- Support Ends for Version 1.3 and Prior
-
-### Version 1.8		Clearer Cat			Nightly-beta		Mid-December 2015
-- Bugfixes and cleaner code
-- Addition of jDomain Code (testing and eval)
-  - jDomain is the code used for joining computers to domain or rejoin them to domains
-
-### Version 1.7		Black Bear			hotfix-release		End-November 2015
-- Security patches for version 1.5-1.6
-- Trial options
-
-### Version 1.6-hotfix					hotfix-release		End-October 2015
-- Bugfixes and cleaner code
 
 ### Version 1.5		Active Aardvark		Nightly-Official	Mid-October 2015
 - MetroUI Full Release
