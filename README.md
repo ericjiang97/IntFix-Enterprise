@@ -35,8 +35,5 @@ _This project is abandoned and out of date. End of Support is officially at Nove
 - Button Logo Change.
 - Initial Release based on IntFix Lite code
 
-##Planned future Features
-- Join Domain Feature
-
 ## License
 This application is currently released under the Apache GNL License Version 2.0 and will be updated to a General Software License.
